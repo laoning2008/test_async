@@ -13,14 +13,16 @@ CPMAddPackage(
     GITHUB_REPOSITORY chriskohlhoff/asio
     GIT_TAG asio-1-24-0)
 CPMAddPackage(
-      NAME libunifex
-      GITHUB_REPOSITORY facebookexperimental/libunifex
-      GIT_TAG 591ec09e7d51858ad05be979d4034574215f5971)
+    NAME libunifex
+    GITHUB_REPOSITORY facebookexperimental/libunifex
+    GIT_TAG 591ec09e7d51858ad05be979d4034574215f5971)
 CPMAddPackage(
     NAME async_simple
     GITHUB_REPOSITORY alibaba/async_simple
     GIT_TAG 1.0
+    PATCH_COMMAND git checkout . && git apply ${CMAKE_CURRENT_SOURCE_DIR}/patch/async_simple_build_error.patch
     OPTIONS "ASYNC_SIMPLE_ENABLE_TESTS OFF" "ASYNC_SIMPLE_BUILD_DEMO_EXAMPLE OFF")
+    
 
 add_executable(test_async src/main.cxx)
 
